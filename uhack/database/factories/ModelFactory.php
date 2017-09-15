@@ -21,15 +21,5 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
         'username' => $faker->word,
-        'bdate' => '1995-04-03'
-    ];
-});
-
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
-    static $password;
-
-    return [
-        'user_id' => App\User::all()->random()->id,
-        'content' => $faker->paragraph(25)
     ];
 });
