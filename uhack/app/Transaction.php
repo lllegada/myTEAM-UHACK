@@ -1,6 +1,6 @@
 <?php
 
-namespace iSave;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,11 +11,11 @@ class Transaction extends Model
     ];
 
     public function spending_user(){
-    	return $this->belongsTo('iSave\User', 'from_user', 'acc_no');
+    	return $this->belongsTo('App\User', 'from_user', 'acc_no');
     }
 
     public function receiving_user(){
-    	return $this->belongsTo('iSave\User', 'to_user', 'acc_no');
+    	return $this->belongsTo('App\User', 'to_user', 'acc_no');
     }
 
     public static function descriptions(){
