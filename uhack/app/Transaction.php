@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Transaction extends Model
 {
     protected $fillable = [
@@ -18,7 +18,4 @@ class Transaction extends Model
     	return $this->belongsTo('App\User', 'to_user', 'acc_no');
     }
 
-    public static function descriptions(){
-    	
-    }
 }

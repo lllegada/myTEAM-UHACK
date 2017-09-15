@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Transaction;
 use Auth;
 class TransactionController extends Controller
 {
@@ -38,7 +40,59 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = "";
+        if(!empty($request->debit_amount) && !empty($request->debit_description)){
+            $transaction = new Transaction;
+            $transaction->from_user = Auth::user()->acc_no;
+            $transaction->to_user = $request->to_user;
+            $transaction->transaction_date = Carbon::now();
+            $transaction->amount = $request->debit_amount;
+            $transaction->description = $request->debit_description;
+            $transaction->save();
+            $channel_id = rand(0, 99999).'_'.rand(0, 99999);
+            // API part
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api-uat.unionbankph.com/hackathon/sb/transfers/initiate",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "{\"channel_id\":\"".$channel_id."\",\"transaction_id\":\"".$transaction->id."\",\"source_account\":\"".$transaction->from_user."\",\"source_currency\":\"PHP\",\"target_account\":\"".$transaction->to_user."\",\"target_currency\":\"PHP\",\"amount\":".$transaction->amount."}",
+                CURLOPT_HTTPHEADER => array(
+                    "accept: application/json",
+                    "content-type: application/json",
+                    "x-ibm-client-id: bc251d2c-2a2e-42b2-a427-66d74080118f",
+                    "x-ibm-client-secret: sB3nI0pB4aS2nE2tS5vH7mG1mQ6uL6rK6uA3lL3rS0aH2vU5fN"
+                ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+            echo $err;
+            echo $response;
+            if ($err) {
+                $message = "<h4>Error!</h4>|<p>" . $err."</p>";
+                $transaction->delete();
+            } else {
+                $message = "<h4>Success!</h4>|<p>Php'".$transaction->amount."'.00 was transferred to '".$transaction->receiving_user."'</p>";
+            }
+        }else{
+            $message = "<h4>Error!</h4>|<p>You forgot to input the following:</p><ul>";
+            if(empty($request->debit_amount)){
+                $message.="<li>The amount you wish to transfer</li>";
+            }
+            if(empty($request->debit_description)){
+                $message.="<li>The category of your transaction</li>";
+            }
+            $message .= "</ul>";
+        }
+        return $message;
     }
 
     /**
