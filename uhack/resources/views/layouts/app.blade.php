@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'iSAVE') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'iSave') }}
                     </a>
                 </div>
 
@@ -53,6 +53,11 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+<<<<<<< HEAD
+                                    <li><a href="/posts/create">Add rant</a>
+                                    </li>
+
+=======
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -62,6 +67,7 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+>>>>>>> fb2292d4acebeaa68531b9a96e9621bafffeb3ea
                                     </li>
                                 </ul>
                             </li>

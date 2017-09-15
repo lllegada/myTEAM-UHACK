@@ -22,17 +22,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'acc_no' => $faker->word,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-    ];
-});
-
-$factory->define(App\Transaction::class, function (Faker\Generator $faker) {
-    static $password;
-
-    return [
-        'from_user' => App\User::all()->random()->acc_no,
-        'to_user' => App\User::all()->random()->acc_no,
-        'transaction_date' => $faker->dateTimeThisYear($max = 'now', $timezone = date_default_timezone_get()),
-        'amount' => $faker->numberBetween($min = 100, $max = 20000),
-        'description' => $faker->sentence,
+        'username' => $faker->word,
     ];
 });
