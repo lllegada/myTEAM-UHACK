@@ -48,7 +48,7 @@
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
 			@forelse(Auth::user()->expenses as $expense)
-				<li>{{ $expense->description }} on {{ $expense->transaction_date }}</li>
+				<li>Paid {{$expense->amount}} to {{ $expense->receiving_user->name }} for {{ $expense->description }} on {{ $expense->transaction_date }}</li>
 			@empty
 				<li>No Expenses.</li>
 			@endforelse
@@ -61,7 +61,7 @@
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
 			@forelse(Auth::user()->income as $income)
-				<li>{{ $income->description }} on {{ $income->transaction_date }}</li>
+				<li>Received {{$income->amount}} from {{ $income->spending_user->name }} for {{ $income->description }} on {{ $income->transaction_date }}</li>
 			@empty
 				<li>No income</li>
 			@endforelse
