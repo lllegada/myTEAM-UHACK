@@ -74,8 +74,8 @@ class TransactionController extends Controller
             $err = curl_error($curl);
 
             curl_close($curl);
-            echo $err;
-            echo $response;
+            // echo $err;
+            // echo $response;
             if ($err) {
                 $message = "<h4>Error!</h4>|<p>" . $err."</p>";
                 $transaction->delete();
@@ -92,7 +92,26 @@ class TransactionController extends Controller
             }
             $message .= "</ul>";
         }
-        return $message;
+        $transactions = Auth::user()->expenses()->orderBy('updated_at', 'desc')->groupBy('to_user')->get();
+        return array($message, $this->transactionString($transactions));
+    }
+
+    public function transactionString($transactions){
+        $transactionString = "";
+        foreach($transactions as $transaction){
+            $transactionString .= ('<li class="list-group-item transaction" id="transaction_'.$transaction->id.'" data-toUser="'.$transaction->to_user.'">'.
+                                    '<div class="row">'.
+                                        '<div class="col-md-4 col-sm-4 name">'.$transaction->receiving_user->name .'</div>'.
+                                        '<div class="col-md-3 col-sm-3 description">'.$transaction->description.'</div>'.
+                                        '<div class="col-md-3 col-sm-3 amount">'.$transaction->amount.'</div>'.
+                                        '<div class="col-md-2 col-sm-2">'.
+                                            '<button class="btn btn-success pay_transaction" id="pay_transaction_'.$transaction->id.'">Pay</button>'.
+                                            '<button class="btn btn-primary edit_transaction">Edit</button>'.
+                                        '</div>'.
+                                    '</div>'.
+                                '</li>');
+        }
+        return $transactionString;
     }
 
     /**

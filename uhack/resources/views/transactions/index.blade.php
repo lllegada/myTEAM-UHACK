@@ -6,15 +6,16 @@
 			<div class="panel-heading">
 				<h3>Debit</h3>
 			</div>
-			<ul class="list-group">
+			<ul class="list-group transaction-list">
 				@forelse($expenses as $expense)
-					<li class="list-group-item transaction" id="transaction_{{ $expense->id }}">
+					<li class="list-group-item transaction" id="transaction_{{ $expense->id }}" data-toUser="{{ $expense->to_user }}">
 						<div class="row">
 							<div class="col-md-4 col-sm-4 name">{{ $expense->receiving_user->name }}</div>
 							<div class="col-md-3 col-sm-3 description">{{ $expense->description }}</div>
 							<div class="col-md-3 col-sm-3 amount">{{ $expense->amount }}</div>
 							<div class="col-md-2 col-sm-2">
 								<button class="btn btn-success pay_transaction" id="pay_transaction_{{ $expense->id }}">Pay</button>
+								<button class="btn btn-primary edit_transaction">Edit</button>
 							</div>
 							<!-- <input type="text" name="description" value="{{ $expense->description }}" placeholder="Description" /> -->
 							<!-- in the amount of Php<input type="number" name="amount" value="{{ $expense->amount }}" min="100" /> -->
