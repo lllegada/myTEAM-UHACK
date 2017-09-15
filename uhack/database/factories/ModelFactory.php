@@ -26,3 +26,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Transaction::class, function(Faker\Generator $faker){
+    static $password;
+
+    return [
+        'from_user' => App\User::all()->random()->acc_no,
+        'to_user' => App\User::all()->random()->acc_no,
+        'transaction_date' => $faker->dateTimeThisYear($max = 'now', $timezone = date_default_timezone_get()),
+        'amount' => $faker->numberBetween($min = 100, $max = 20000),
+        'description' => $faker->sentence()
+    ];
+});
+>>>>>>> 912bee34d684b8bb53bcc142acc43d73fed8b606
