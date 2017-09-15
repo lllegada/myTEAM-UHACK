@@ -1,17 +1,17 @@
- @font-face {
+@font-face {
     font-family: 'Montserrat';
-    src: url('../public/fonts/Montserrat.otf');
+    src: url('../fonts/Montserrat.otf');
+}
+
+@font-face {
+    font-family: 'Jellee';
+    src: url('../fonts/Jellee.otf');
 }
 
 @media screen and (max-device-width: 480px) {
-	html, body {
-        background-color: #fff;
-        color: #636b6f;
-        font-weight: 100;
-        height: 100vh;
-        margin: 5px;
-    }
-
+	body {
+		font-family: 'Jellee';
+	}
 
     .flex-center {
         align-items: center;
@@ -23,19 +23,33 @@
         position: relative;
     }
 
-    .top-right {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-    }
-
     .content {
+    	margin-top: 50px;
         text-align: center;
     }
 
-   	.title {
+   	.title h1 {
         font-size: 50px;
-        font-family: 'Montserrat';
+        font-family: 'Jellee';
+        margin: 0;
     }
 
+    .title img {
+    	width: 100px;
+    	height: 100px;
+    }
+
+    .title #name {
+    	width: 100%;
+        height: 100%;
+    }
+
+    .btn-green {
+        background-color: #2ECC71; 
+        color: white;  
+    }
+
+    .form-control {
+       background-color: #EAEDED;
+    }
 }

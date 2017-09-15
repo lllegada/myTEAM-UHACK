@@ -34,7 +34,7 @@ $factory->define(App\Transaction::class, function(Faker\Generator $faker){
         'to_user' => App\User::all()->random()->acc_no,
         'transaction_date' => $faker->dateTimeThisYear($max = 'now', $timezone = date_default_timezone_get()),
         'amount' => $faker->numberBetween($min = 100, $max = 20000),
-        'description' => $faker->sentence(),
+        'description' => $faker->word,
         'autopay' => $faker->numberBetween($min = 0, $max = 1),
     ];
 });

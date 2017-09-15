@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -33,6 +34,10 @@ class User extends Authenticatable
 
     public function income(){
         return $this->hasMany('App\Transaction', 'to_user', 'acc_no');
+    }
+
+    public static function allUsers(){
+        return User::where('id', '!=', Auth::user()->id)->get();
     }
 
 }
