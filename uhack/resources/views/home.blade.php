@@ -2,16 +2,45 @@
 
 @section('content')
 
-	<div class="row">
-		<div class="col-md-6 col-md-offset-4">
-			<div class="panel-body panel-default text-center">
-				<img class="profile-img" src="/img-uploads/profile-pic.png">
-				<h1>{{ $user->name }}<i>({{ $user->username }})</i></h1>
-				<h4>{{ $user->email }}</h4>
-				<h4>{{ $user->bdate->format('l j F Y') }} ({{ $user->bdate->age}} years old)</h4>
-				<input type="submit" class="btn btn-success" value="Follow">
+	<div class="flex-center position-ref full-height">
+
+		<div class="panel-default panel"> 
+			<div class="panel-header">
+				Total Cash Received
+			</div>
+			<div class="panel-body">
+				<!--- Pie Graph, then link to breakdown  -->
+				<div class="">
+					
+				</div>
+				<div class="">
+				</div>
 			</div>
 		</div>
+
+		<div class="panel-default panel"> 
+			<div class="panel-header">
+				Total Cash Sent
+			</div>
+			<div class="panel-body">
+				<!--- Pie Graph, then link to breakdown -->
+				<div class="">
+					
+				</div>
+				<div class="">
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-defaul panel"> 
+			<div class="panel-header">
+				Current Balance
+			</div>
+			<div class="panel-body">
+				<!--- Bar Graph  -->
+			</div>
+		</div>
+
 	</div>
 
 @endsection
