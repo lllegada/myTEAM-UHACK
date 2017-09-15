@@ -26,3 +26,10 @@ Route::resource('/posts', 'PostsController');
 Route::resource('/about','AboutController');
 
 //Route::get('/posts','CreateController@about');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
