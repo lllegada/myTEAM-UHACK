@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace iSave;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,11 +28,11 @@ class User extends Authenticatable
     ];
 
     public function expenses(){
-        return $this->hasMany('App\Transaction', 'from_user', 'acc_no');
+        return $this->hasMany('iSave\Transaction', 'from_user', 'acc_no');
     }
 
     public function income(){
-        return $this->hasMany('App\Transaction', 'to_user', 'acc_no');
+        return $this->hasMany('iSave\Transaction', 'to_user', 'acc_no');
     }
 
 }

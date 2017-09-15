@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Rants',
+    'name' => 'iSave',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        iSave\Providers\AppServiceProvider::class,
+        iSave\Providers\AuthServiceProvider::class,
+        // iSave\Providers\BroadcastServiceProvider::class,
+        iSave\Providers\EventServiceProvider::class,
+        iSave\Providers\RouteServiceProvider::class,
 
     ],
 
