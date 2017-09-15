@@ -25,3 +25,4 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'username' => $faker->word,
     ];
 });
+
