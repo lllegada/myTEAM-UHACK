@@ -12,17 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
-Route::get('/profile/{username}', 'ProfileController@profile');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-Route::resource('/posts', 'PostsController');
-
-Route::resource('/about','AboutController');
-
-//Route::get('/posts','CreateController@about');

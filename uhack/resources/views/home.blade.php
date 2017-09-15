@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
 
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-4">
+			<div class="panel-body panel-default text-center">
+				<img class="profile-img" src="/img-uploads/profile-pic.png">
+				<h1>{{ $user->name }}<i>({{ $user->username }})</i></h1>
+				<h4>{{ $user->email }}</h4>
+				<h4>{{ $user->bdate->format('l j F Y') }} ({{ $user->bdate->age}} years old)</h4>
+				<input type="submit" class="btn btn-success" value="Follow">
+			</div>
+		</div>
+	</div>
+
 @endsection

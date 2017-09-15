@@ -15,11 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'bdate'
-    ];
-
-    protected $dates = [
-        'bdate'
+        'name', 'email', 'password', 'username', 'acc_no'
     ];
 
     /**
@@ -30,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function expenses(){
+        return $this->hasMany('App\Transaction', 'from_user', 'acc_no');
+    }
+
+    public function income(){
+        return $this->hasMany('App\Transaction', 'to_user', 'acc_no');
+    }
+
 }

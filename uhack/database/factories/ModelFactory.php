@@ -17,19 +17,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->name,
+        'username' => $faker->userName,
         'email' => $faker->unique()->safeEmail,
+        'acc_no' => $faker->word,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
         'username' => $faker->word,
-        'bdate' => '1995-04-03'
-    ];
-});
-
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
-    static $password;
-
-    return [
-        'user_id' => App\User::all()->random()->id,
-        'content' => $faker->paragraph(25)
     ];
 });
