@@ -14,6 +14,12 @@
     <link href="{{ asset('../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+
+    @stack('styles')
+    <!-- Javascript -->
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    @stack('scripts')
+
 </head>
 <body>
     <div id="app">
