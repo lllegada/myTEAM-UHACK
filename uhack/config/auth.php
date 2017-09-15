@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => iSave\User::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [

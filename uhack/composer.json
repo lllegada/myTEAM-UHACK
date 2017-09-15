@@ -20,7 +20,7 @@
             "database"
         ],
         "psr-4": {
-            "iSave\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
