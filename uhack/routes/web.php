@@ -23,4 +23,7 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::resource('/transact', 'TransactionController');
+	Route::resource('/home', 'HomeController');
+	Route::resource('/home/{month}', 'HomeController@show');
+
 });
