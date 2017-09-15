@@ -37,4 +37,4 @@ $factory->define(App\Transaction::class, function(Faker\Generator $faker){
         'description' => $faker->sentence()
     ];
 });
->>>>>>> 912bee34d684b8bb53bcc142acc43d73fed8b606
+
