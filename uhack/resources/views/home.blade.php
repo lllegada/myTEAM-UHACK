@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-	<div class="flex-center position-ref full-height">
+	<body>
+	<div class="position-ref full-height">
 
 		<div class="panel-default panel"> 
 			<div class="panel-header">
@@ -39,13 +39,18 @@
 			<div class="panel-body">
 				<!--- Bar Graph  -->
 			</div>
+			<div class="">
+					
+				</div>
+				<div class="">
+				</div>
 		</div>
 
 	</div>
 
-	<div class="row">
-		<h2>Debit</h2>
-		<div class="col-md-6 col-md-offset-4">
+	<div class="tbl">
+		<h4><span class="glyphicon glyphicon-list"></span> Debit</h4>
+		<div class="col-sm-12">
 			<ul>
 			@forelse(Auth::user()->expenses as $expense)
 				<li>Paid {{$expense->amount}} to {{ $expense->receiving_user->name }} for {{ $expense->description }} on {{ $expense->transaction_date }}</li>
@@ -56,9 +61,9 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<h2>Credit</h2>
-		<div class="col-md-6 col-md-offset-4">
+	<div class="tbl">
+		<h4><span class="glyphicon glyphicon-list"></span> Credit</h4>
+		<div class="col-sm-12 tblrw">
 			<ul>
 			@forelse(Auth::user()->income as $income)
 				<li>Received {{$income->amount}} from {{ $income->spending_user->name }} for {{ $income->description }} on {{ $income->transaction_date }}</li>
@@ -68,4 +73,5 @@
 			</ul>
 		</div>
 	</div>
+	</body>
 @endsection

@@ -8,10 +8,37 @@
     src: url('../fonts/Jellee.otf');
 }
 
-@media screen and (max-device-width: 480px) {
-	body {
-		font-family: 'Jellee';
-	}
+body {
+    background-color: white;
+}
+
+.navbar-default {
+    background-color: #2ECC71;
+    color: white;
+}
+
+.navbar-toggle {
+    border: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-family: "Jellee";
+}
+
+.navbar-default .navbar-nav .dropdown-menu>li>a
+.navbar-default .navbar-nav .open .dropdown-menu>li>a,
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover
+.dropdown a {
+    color: white;
+}
+
+@media screen and (max-device-width: 768px) {
 
     .flex-center {
         align-items: center;
@@ -28,28 +55,45 @@
         text-align: center;
     }
 
-   	.title h1 {
-        font-size: 50px;
-        font-family: 'Jellee';
-        margin: 0;
-    }
-
-    .title img {
-    	width: 100px;
-    	height: 100px;
-    }
-
-    .title #name {
-    	width: 100%;
-        height: 100%;
-    }
-
     .btn-green {
         background-color: #2ECC71; 
-        color: white;  
+        color: white; 
+        width: 310px;
     }
 
-    .form-control {
-       background-color: #EAEDED;
+    input {
+        border: none;
+        border-bottom: 3px solid #CACFD2;
+        min-width: 300px;
+    }
+
+    .panel-default {
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .tbl {
+        min-width: 320px;
+        margin: 2px 3px;
+    }
+    .tbl h4 {
+        margin-left: 10px;
+    }
+
+    .tbl ul {
+        list-style-type: none;
+        padding: 3px;
+    }
+
+    .tbl li {
+        background-color: #F4F6F7;
+        border-radius: 0 10px 10px 0;
+        border-left: 3px solid #F8C471;
+        padding: 5px;
+        margin: 4px 0;
+    }
+
+    .tbl .tblrw {
+        background-color: #CACFD2;
     }
 }

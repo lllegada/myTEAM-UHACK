@@ -8,73 +8,64 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
+       
+        <link href="../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="../css/home.css" rel="stylesheet" type="text/css">
-        <link href="../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css"> 
     </head>
     <body>
         <div class="flex-center position-ref">
 
             <div class="content">
                 <div class="title">
-                    <img src="../img-uploads/logo.png" alt="logo"/>
-                    <img src="../img-uploads/name.png" id="name" alt="name"/>
+                    <img src="../img-uploads/login.png" alt="logo"/>
                 </div>
 
-                <div >
-                    <h3>Login</h3>
-                <div>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+                <h3>Log in</h3>
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            
-                                <input id="username" type="username" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus>
+                <div id='loginform' class="col-sm-12">
+                    
 
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                            {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
-                                <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-
-                        </div>
-
-                        <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me |
-                                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                                    </label>
-                                </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                 
-                                <button type="submit" class="btn btn-green">
-                                    Login
-                                </button>
+                                    <input id="username" type="username" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus>
 
-                                
+                                    @if ($errors->has('username'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                    @endif
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+
+                            </div>
+
+                            <div class="form-group">  
+                                    <button type="submit" class="btn btn-green">
+                                        Login
+                                    </button>                               
+                                    <div class="checkbox">
+                                        <label>
+                                            <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                        Forgot Your Password?
+                                    </a>
+                                        </label>
+                                    </div>
+                            </div>
+                        </form>
+                </div>
             </div>
         </div>
     </body>
