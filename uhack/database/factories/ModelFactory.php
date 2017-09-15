@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(iSave\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -26,15 +26,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Transaction::class, function(Faker\Generator $faker){
+$factory->define(iSave\Transaction::class, function(Faker\Generator $faker){
     static $password;
 
     return [
-        'from_user' => App\User::all()->random()->acc_no,
-        'to_user' => App\User::all()->random()->acc_no,
+        'from_user' => iSave\User::all()->random()->acc_no,
+        'to_user' => iSave\User::all()->random()->acc_no,
         'transaction_date' => $faker->dateTimeThisYear($max = 'now', $timezone = date_default_timezone_get()),
         'amount' => $faker->numberBetween($min = 100, $max = 20000),
-        'description' => $faker->sentence()
+        'description' => $faker->sentence(),
+        'autopay' => $faker->numberBetween($min = 0, $max = 1),
     ];
 });
 

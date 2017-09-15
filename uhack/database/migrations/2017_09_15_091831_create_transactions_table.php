@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->timestamp('transaction_date');
             $table->integer('amount');
             $table->string('description');
+            $table->integer('autopay');
             $table->timestamps();
         });
     }

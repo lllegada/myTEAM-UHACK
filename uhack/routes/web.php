@@ -13,10 +13,14 @@
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->middleware('guest');
 
 Auth::routes();
 
-Route::get('/home', function(){
-	return view('home');
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/home', function(){
+		return view('home');
+	});
+
+	Route::resource('/transact', 'TransactionController');
 });

@@ -2,14 +2,45 @@
 
 @section('content')
 
-	<div class="row">
-		<div class="col-md-6 col-md-offset-4">
-			<div class="panel-body panel-default text-center">
-				<img class="profile-img" src="/img-uploads/profile-pic.png">
-				<h1>{{ Auth::user()->name }}<i>({{ Auth::user()->username }})</i></h1>
-				<h4>{{ Auth::user()->email }}</h4>
+	<div class="flex-center position-ref full-height">
+
+		<div class="panel-default panel"> 
+			<div class="panel-header">
+				Total Cash Received
+			</div>
+			<div class="panel-body">
+				<!--- Pie Graph, then link to breakdown  -->
+				<div class="">
+					
+				</div>
+				<div class="">
+				</div>
 			</div>
 		</div>
+
+		<div class="panel-default panel"> 
+			<div class="panel-header">
+				Total Cash Sent
+			</div>
+			<div class="panel-body">
+				<!--- Pie Graph, then link to breakdown -->
+				<div class="">
+					
+				</div>
+				<div class="">
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-defaul panel"> 
+			<div class="panel-header">
+				Current Balance
+			</div>
+			<div class="panel-body">
+				<!--- Bar Graph  -->
+			</div>
+		</div>
+
 	</div>
 
 	<div class="row">
@@ -17,7 +48,7 @@
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
 			@forelse(Auth::user()->expenses as $expense)
-				<li>{{ $expense->description }} on {{ $expense->transaction_date }}</li>
+				<li>Paid {{$expense->amount}} to {{ $expense->receiving_user->name }} for {{ $expense->description }} on {{ $expense->transaction_date }}</li>
 			@empty
 				<li>No Expenses.</li>
 			@endforelse
@@ -30,7 +61,7 @@
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
 			@forelse(Auth::user()->income as $income)
-				<li>{{ $income->description }} on {{ $income->transaction_date }}</li>
+				<li>Received {{$income->amount}} from {{ $income->spending_user->name }} for {{ $income->description }} on {{ $income->transaction_date }}</li>
 			@empty
 				<li>No income</li>
 			@endforelse
