@@ -38,3 +38,4 @@ $factory->define(App\Transaction::class, function(Faker\Generator $faker){
         'autopay' => $faker->numberBetween($min = 0, $max = 1),
     ];
 });
+
