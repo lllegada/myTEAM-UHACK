@@ -1,0 +1,41 @@
+ @font-face {
+    font-family: 'Montserrat';
+    src: url('../public/fonts/Montserrat.otf');
+}
+
+@media screen and (max-device-width: 480px) {
+	html, body {
+        background-color: #fff;
+        color: #636b6f;
+        font-weight: 100;
+        height: 100vh;
+        margin: 5px;
+    }
+
+
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .position-ref {
+        position: relative;
+    }
+
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+   	.title {
+        font-size: 50px;
+        font-family: 'Montserrat';
+    }
+
+}
