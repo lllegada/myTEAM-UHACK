@@ -6,7 +6,7 @@
 
 		<div class="panel-default panel"> 
 			<div class="panel-header">
-				Total Cash Received
+				Total Credit
 			</div>
 			<div class="panel-body">
 				<!--- Pie Graph, then link to breakdown  -->
@@ -20,7 +20,7 @@
 
 		<div class="panel-default panel"> 
 			<div class="panel-header">
-				Total Cash Sent
+				Total Debit
 			</div>
 			<div class="panel-body">
 				<!--- Pie Graph, then link to breakdown -->
@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="row">
-		<h2>Expenses</h2>
+		<h2>Debit</h2>
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
 			@forelse(Auth::user()->expenses as $expense)
@@ -57,7 +57,7 @@
 	</div>
 
 	<div class="row">
-		<h2>Income</h2>
+		<h2>Credit</h2>
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
 			@forelse(Auth::user()->income as $income)
