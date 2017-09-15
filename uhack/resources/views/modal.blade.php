@@ -91,3 +91,34 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="loadinng_label" aria-hidden="true" data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="loader center-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@push('styles')
+<style type="text/css">
+	.loader {
+	    border: 16px solid #f3f3f3; /* Light grey */
+	    border-top: 16px solid #3498db; /* Blue */
+	    border-bottom: 16px solid #3498db;
+	    border-radius: 50%;
+	    width: 120px;
+	    height: 120px;
+	    animation: spin 2s linear infinite;
+	}
+
+	@keyframes spin {
+	    0% { transform: rotate(0deg); }
+	    100% { transform: rotate(360deg); }
+	}
+
+
+</style>
+@endpush

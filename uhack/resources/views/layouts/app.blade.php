@@ -55,6 +55,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/home">Home</a></li>
                                     <li><a href="{{ route('transact.index') }}">Transactions</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"

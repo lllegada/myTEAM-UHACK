@@ -25,6 +25,7 @@ function pay_transaction(e){
 	for (var pair of formData.entries()){
 		console.log(pair[0]+', '+pair[1]);
 	}
+	$("#loading").modal("show");
 	$.ajax({
 		method: 'POST',
 		url: "/transact",
@@ -33,11 +34,13 @@ function pay_transaction(e){
 		contentType: false,
 		success: function(data){
 			var message = data[0].split("|");
+			$("#loading").modal("hide");
 			$("#debit_message").modal({keyboard:true});
 			$("#debit_message").find(".modal-header").html(message[0]);
 			$("#debit_message").find(".modal-body").html(message[1]);
 			$("#debit_message").modal('show');
 			$(".transaction-list").html(data[1]);
+			console.log(data[2]);
 		},
 		error: function(data){
 			console.log(data.responseText);
@@ -56,6 +59,7 @@ function add_debit(e){
 	$("#debit_modal").find("#debit_description").val("");
 	$("#debit_modal").find("#debit_amount").val("");
 	$("#debit_modal").modal("hide");
+	$("#loading").modal("show");
 	$.ajax({
 		method: 'POST',
 		url: "/transact",
@@ -64,11 +68,13 @@ function add_debit(e){
 		contentType: false,
 		success: function(data){
 			var message = data[0].split("|");
+			$("#loading").modal("hide");
 			$("#debit_message").modal({keyboard:true});
 			$("#debit_message").find(".modal-header").html(message[0]);
 			$("#debit_message").find(".modal-body").html(message[1]);
 			$("#debit_message").modal('show');
 			$(".transaction-list").html(data[1]);
+			console.log(data[2]);
 		},
 		error: function(data){
 			console.log(data.responseText);
