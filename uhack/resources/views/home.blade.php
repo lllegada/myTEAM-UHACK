@@ -83,7 +83,7 @@
 		<div class="col-sm-12">
 			<ul>
 			@forelse($expenses as $expense)
-				<li>Paid {{$expense->amount}} to {{ $expense->receiving_user->name }} for {{ $expense->description }} on {{ $expense->transaction_date }}</li>
+				<li>Paid {{$expense->amount}} to {{ $expense->receiving_user->name }} for {{ $expense->description }} on {{ $expense->transaction_date->diffForHumans() }}</li>
 			@empty
 				<li>No Expenses.</li>
 			@endforelse
@@ -96,7 +96,7 @@
 		<div class="col-sm-12 tblrw">
 			<ul>
 			@forelse($incomes as $income)
-				<li>Received {{$income->amount}} from {{ $income->spending_user->name }} for {{ $income->description }} on {{ $income->transaction_date }}</li>
+				<li>Received {{$income->amount}} from {{ $income->spending_user->name }} for {{ $income->description }} on {{ $income->transaction_date->diffForHumans() }}</li>
 			@empty
 				<li>No income</li>
 			@endforelse

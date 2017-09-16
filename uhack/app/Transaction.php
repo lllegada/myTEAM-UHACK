@@ -18,4 +18,10 @@ class Transaction extends Model
     	return $this->belongsTo('App\User', 'to_user', 'acc_no');
     }
 
+    protected $dates = [
+    	'created_at',
+    	'updated_at',
+    	'transaction_date'
+    ];
+
 }

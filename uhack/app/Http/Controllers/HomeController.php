@@ -52,7 +52,7 @@ class HomeController extends Controller
         $total_expense = 0;
         $total_income = 0;
         foreach($expensesObj as $expense){
-            $expense_date = $expense->updated_at;
+            $expense_date = $expense->transaction_date;
             $expense_date = explode(' ', $expense_date);
             $date = $expense_date[0];
 
@@ -67,7 +67,7 @@ class HomeController extends Controller
         }
         foreach($incomesObj as $income){
 
-            $income_date = $expense->updated_at;
+            $income_date = $expense->transaction_date;
 
             $income_date = explode(' ', $income_date);
             $date = $income_date[0];
