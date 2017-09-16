@@ -80,7 +80,7 @@ class TransactionController extends Controller
                 $message = "<h4>Error!</h4>|<p>" . $err."</p>";
                 $transaction->delete();
             } else {
-                $message = "<h4>Success!</h4>|<p>Php'".$transaction->amount."'.00 was transferred to '".$transaction->receiving_user."'</p>";
+                $message = "<h4>Success!</h4>|<p>Php ".$transaction->amount.".00 was transferred to ".$transaction->receiving_user->name."</p>";
             }
         }else{
             $message = "<h4>Error!</h4>|<p>You forgot to input the following:</p><ul>";
@@ -93,7 +93,9 @@ class TransactionController extends Controller
             $message .= "</ul>";
         }
         $transactions = Auth::user()->expenses()->orderBy('updated_at', 'desc')->groupBy('to_user')->get();
-        return array($message, $this->transactionString($transactions), $this->getBalance(Auth::user()->acc_no));
+        $available_balance = Auth::user()->getBalance()["currency"]." ".round(Auth::user()->getBalance()["avaiable_balance"],2);
+        $current_balance = Auth::user()->getBalance()["currency"]." ".round(Auth::user()->getBalance()["current_balance"], 2);
+        return array($message, $this->transactionString($transactions), $available_balance, $current_balance);
     }
 
     public function transactionString($transactions){
@@ -112,35 +114,6 @@ class TransactionController extends Controller
                                 '</li>');
         }
         return $transactionString;
-    }
-
-    public function getBalance($acc_no){
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-uat.unionbankph.com/hackathon/sb/accounts/".$acc_no,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-            "accept: application/json",
-            "x-ibm-client-id: bc251d2c-2a2e-42b2-a427-66d74080118f",
-            "x-ibm-client-secret: sB3nI0pB4aS2nE2tS5vH7mG1mQ6uL6rK6uA3lL3rS0aH2vU5fN"
-            ),
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            return "cURL Error #:" . $err;
-        }
-        return $response;
     }
 
     /**
