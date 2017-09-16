@@ -6,9 +6,11 @@
 			<div class="panel-heading">
 				<h3>Debit</h3>
 			</div>
+
 			<div class="panel-body">
 				<ul class="list-group">
-					<li class="list-group-item current_balance"><h3>Current Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["avaiable_balance"], 2)}}</h3></li>
+					<li class="list-group-item current_balance">
+					<h3>Current Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["avaiable_balance"], 2)}}</h3></li>
 					<li class="list-group-item available_balance"><h3>Available Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["current_balance"], 2)}}</h3></li>
 				</ul>
 				<ul class="list-group transaction-list">
@@ -19,8 +21,10 @@
 								<div class="col-md-3 col-sm-3 description">{{ $expense->description }}</div>
 								<div class="col-md-3 col-sm-3 amount">{{ $expense->amount }}</div>
 								<div class="col-md-2 col-sm-2">
-									<button class="btn btn-success pay_transaction" id="pay_transaction_{{ $expense->id }}">Pay</button>
-									<button class="btn btn-primary edit_transaction">Edit</button>
+									<div class="btn-group" role="group" aria-label="...">
+										<button class="btn btn-orange pay_transaction" id="pay_transaction_{{ $expense->id }}"><span class="glyphicon glyphicon-credit-card"></span> Pay</button>
+										<button class="btn btn-blue edit_transaction"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
+									</div>
 								</div>
 								<!-- <input type="text" name="description" value="{{ $expense->description }}" placeholder="Description" /> -->
 								<!-- in the amount of Php<input type="number" name="amount" value="{{ $expense->amount }}" min="100" /> -->
@@ -33,6 +37,7 @@
 			</div>
 			<div class="panel-footer">
 				<button type="button" class="btn btn-success btn-right" id="add_debit" data-toggle="modal" data-target="#debit_modal">Add Debit</button>
+
 			</div>
 		</div>
 	</div>
