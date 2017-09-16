@@ -10,8 +10,8 @@
 			<div class="panel-body">
 				<ul class="list-group">
 					<li class="list-group-item current_balance">
-					<h3>Current Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["avaiable_balance"], 2)}}</h3></li>
-					<li class="list-group-item available_balance"><h3>Available Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["current_balance"], 2)}}</h3></li>
+					<h5>Current Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["avaiable_balance"], 2)}}</h5></li>
+					<li class="list-group-item available_balance"><h5>Available Balance: {{Auth::user()->getBalance()["currency"]}} {{round(Auth::user()->getBalance()["current_balance"], 2)}}</h5></li>
 				</ul>
 				<ul class="list-group transaction-list">
 					@forelse($expenses as $expense)
@@ -26,9 +26,11 @@
 										<button class="btn btn-blue edit_transaction"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
 									</div>
 								</div>
+
 								<!-- <input type="text" name="description" value="{{ $expense->description }}" placeholder="Description" /> -->
 								<!-- in the amount of Php<input type="number" name="amount" value="{{ $expense->amount }}" min="100" /> -->
 							</div>
+							
 						</li>
 					@empty
 						<li class="list-group-item">You have no debits.</li>
@@ -36,7 +38,7 @@
 				</ul>
 			</div>
 			<div class="panel-footer">
-				<button type="button" class="btn btn-success btn-right" id="add_debit" data-toggle="modal" data-target="#debit_modal">Add Debit</button>
+				<button type="button" class="btn btn-green btn-right " id="add_debit" data-toggle="modal" data-target="#debit_modal"><span class="glyphicon glyphicon-plus"></span> Add Debit</button>
 
 			</div>
 		</div>

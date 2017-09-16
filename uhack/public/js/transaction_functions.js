@@ -40,8 +40,8 @@ function pay_transaction(e){
 			$("#debit_message").find(".modal-body").html(message[1]);
 			$("#debit_message").modal('show');
 			$(".transaction-list").html(data[1]);
-			$(".available_balance").html("<h3>Current Balance: "+data[2]+"</h3>");
-			$(".current_balance").html("<h3>Available Balance: "+data[3]+"</h3>");
+			$(".available_balance").html("<h5>Current Balance: "+data[2]+"</h5>");
+			$(".current_balance").html("<h5>Available Balance: "+data[3]+"</h5>");
 			console.log(data[2]);
 		},
 		error: function(data){
@@ -76,8 +76,8 @@ function add_debit(e){
 			$("#debit_message").find(".modal-body").html(message[1]);
 			$("#debit_message").modal('show');
 			$(".transaction-list").html(data[1]);
-			$(".available_balance").html("<h3>Current Balance: "+data[2]+"</h3>");
-			$(".current_balance").html("<h3>Available Balance: "+data[3]+"</h3>");
+			$(".available_balance").html("<h5>Current Balance: "+data[2]+"</h5>");
+			$(".current_balance").html("<h5>Available Balance: "+data[3]+"</h5>");
 			console.log(data[2]);
 		},
 		error: function(data){
