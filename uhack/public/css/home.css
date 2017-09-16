@@ -19,8 +19,12 @@ h1, h2, h3, h4, h5 {
 }
 
 #navlogo {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.navbar {
+    color: white;
 }
 
 .navbar-default {
@@ -29,8 +33,12 @@ h1, h2, h3, h4, h5 {
     border: none;
 }
 
-.navbar-toggle {
+.navbar-toggle,
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover{
     border: none;
+    color: white;
+    background-color: #2ECC71;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -44,12 +52,15 @@ h1, h2, h3, h4, h5 {
 
 .navbar-default .navbar-nav .dropdown-menu>li>a
 .navbar-default .navbar-nav .open .dropdown-menu>li>a,
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus,
-.navbar-default .navbar-nav>.open>a:hover
-.dropdown a {
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
     color: white;
 }
 
+.navbar-default .navbar-nav>.open>a:hover {
+    background-color: #2ECC71;
+}
 @media screen and (max-device-width: 768px) {
 
     .flex-center {
@@ -84,10 +95,12 @@ h1, h2, h3, h4, h5 {
 
     .btn-orange {
         background-color: #F39C12;
+        color: white;
     }
 
     .btn-blue {
         background-color: #3498DB;
+        color: white;
     }
 
     input {

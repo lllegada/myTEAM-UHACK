@@ -80,7 +80,7 @@ class TransactionController extends Controller
                 $message = "<h4>Error!</h4>|<p>" . $err."</p>";
                 $transaction->delete();
             } else {
-                $message = "<h4>Success!</h4>|<p>Php'".$transaction->amount."'.00 was transferred to '".$transaction->receiving_user."'</p>";
+                $message = "<h4>Success!</h4>|<p>Php ".$transaction->amount.".00 was transferred to ".$transaction->receiving_user->name."</p>";
             }
         }else{
             $message = "<h4>Error!</h4>|<p>You forgot to input the following:</p><ul>";
@@ -93,7 +93,9 @@ class TransactionController extends Controller
             $message .= "</ul>";
         }
         $transactions = Auth::user()->expenses()->orderBy('updated_at', 'desc')->groupBy('to_user')->get();
-        return array($message, $this->transactionString($transactions));
+        $available_balance = Auth::user()->getBalance()["currency"]." ".round(Auth::user()->getBalance()["avaiable_balance"],2);
+        $current_balance = Auth::user()->getBalance()["currency"]." ".round(Auth::user()->getBalance()["current_balance"], 2);
+        return array($message, $this->transactionString($transactions), $available_balance, $current_balance);
     }
 
     public function transactionString($transactions){
