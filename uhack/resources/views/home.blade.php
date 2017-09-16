@@ -11,7 +11,7 @@
 			<div class="panel-body">
 				<!--- Pie Graph, then link to breakdown  -->
 				<div class="">
-					
+					PHP {{ $total_income }}
 				</div>
 				<div class="">
 				</div>
@@ -25,10 +25,9 @@
 			<div class="panel-body">
 				<!--- Pie Graph, then link to breakdown -->
 				<div class="">
-					
+					PHP {{ $total_expense }}
 				</div>
-				<div class="">
-				</div>
+				<div class=""></div>
 			</div>
 		</div>
 
@@ -69,7 +68,7 @@
 		<h2>Debit</h2>
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
-			@forelse(Auth::user()->expenses as $expense)
+			@forelse($expenses as $expense)
 				<li>Paid {{$expense->amount}} to {{ $expense->receiving_user->name }} for {{ $expense->description }} on {{ $expense->transaction_date }}</li>
 			@empty
 				<li>No Expenses.</li>
@@ -82,7 +81,7 @@
 		<h2>Credit</h2>
 		<div class="col-md-6 col-md-offset-4">
 			<ul>
-			@forelse(Auth::user()->income as $income)
+			@forelse($incomes as $income)
 				<li>Received {{$income->amount}} from {{ $income->spending_user->name }} for {{ $income->description }} on {{ $income->transaction_date }}</li>
 			@empty
 				<li>No income</li>
