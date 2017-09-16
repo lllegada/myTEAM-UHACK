@@ -23,7 +23,7 @@
 								<div class="col-md-2 col-sm-2">
 									<div class="btn-group" role="group" aria-label="...">
 										<button class="btn btn-orange pay_transaction" id="pay_transaction_{{ $expense->id }}"><span class="glyphicon glyphicon-credit-card"></span> Pay</button>
-										<button class="btn btn-blue edit_transaction"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
+										<button class="btn btn-blue edit_transaction"><span class="glyphicon glyphicon-edit"></span> Edit</button>
 									</div>
 								</div>
 

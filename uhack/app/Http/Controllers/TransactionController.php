@@ -107,8 +107,10 @@ class TransactionController extends Controller
                                         '<div class="col-md-3 col-sm-3 description">'.$transaction->description.'</div>'.
                                         '<div class="col-md-3 col-sm-3 amount">'.$transaction->amount.'</div>'.
                                         '<div class="col-md-2 col-sm-2">'.
-                                            '<button class="btn btn-success pay_transaction" id="pay_transaction_'.$transaction->id.'">Pay</button>'.
-                                            '<button class="btn btn-primary edit_transaction">Edit</button>'.
+                                            '<div class="btn-group" role="group" aria-label="...">'.
+                                                '<button class="btn btn-orange pay_transaction" id="pay_transaction_'.$transaction->id.'"><span class="glyphicon glyphicon-credit-card"></span> Pay</button>'.
+                                                '<button class="btn btn-blue edit_transaction"><span class="glyphicon glyphicon-edit"></span> Edit</button>'.
+                                            '</div>'.
                                         '</div>'.
                                     '</div>'.
                                 '</li>');

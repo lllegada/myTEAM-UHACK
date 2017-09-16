@@ -15,9 +15,9 @@ $(document).ready(function(){
 function pay_transaction(e){
 	e.preventDefault();
 	var formData = new FormData();
-	var description = $.trim($(this).parent().siblings(".description").text());
-	var amount = $.trim($(this).parent().siblings(".amount").text());
-	var to_user = $(this).parent().parent().parent().attr("data-toUser");
+	var description = $.trim($(this).parent().parent().siblings(".description").text());
+	var amount = $.trim($(this).parent().parent().siblings(".amount").text());
+	var to_user = $(this).parent().parent().parent().parent().attr("data-toUser");
 	formData.append("_token", $('input[name="_token"]').val());
 	formData.append("debit_description", description);
 	formData.append("debit_amount", amount);
@@ -97,10 +97,10 @@ function update_transaction(){
 
 function edit_transaction(){
 	$("#transaction_modal").modal({keyboard:true});
-	var description = $(this).parent().parent().find(".description").text();
-	var amount = $(this).parent().parent().find(".amount").text();
-	var name = $(this).parent().parent().find(".name").text();
-	var id = $(this).parent().parent().parent().attr("id").split("_")[1];
+	var description = $(this).parent().parent().parent().find(".description").text();
+	var amount = $(this).parent().parent().parent().find(".amount").text();
+	var name = $(this).parent().parent().parent().find(".name").text();
+	var id = $(this).parent().parent().parent().parent().attr("id").split("_")[1];
 	$("#transaction_modal").find("#description").val($.trim(description));
 	$("#transaction_modal").find("#amount").val($.trim(amount));
 	$("#transaction_modal").find(".modal-header").html("<h4>"+$.trim(name)+"</h4>");
